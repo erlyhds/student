@@ -1,0 +1,722 @@
+app:
+  description: 中学生作业辅导
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 中学生作业辅导
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/volcengine_maas:0.0.30@0e6b13a721cc8fb7b928787f86ffc57655ace2cbc938c4738c209d70b18a85f8
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.6@dd589dc093c8084925858034ab5ec1fdf0d33819f43226c2f8c4a749a9acbbb2
+    version: null
+kind: app
+version: 0.4.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1758414661457-source-answer-target
+      selected: false
+      source: '1758414661457'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1751966615429-source-1758781894208-target
+      selected: false
+      source: '1751966615429'
+      sourceHandle: source
+      target: '1758781894208'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1758781894208-1-1758414661457-target
+      selected: false
+      source: '1758781894208'
+      sourceHandle: '1'
+      target: '1758414661457'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1758781894208-2-17587825487280-target
+      selected: false
+      source: '1758781894208'
+      sourceHandle: '2'
+      target: '17587825487280'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17587825487280-source-17587826183570-target
+      selected: false
+      source: '17587825487280'
+      sourceHandle: source
+      target: '17587826183570'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1758781894208-1759028405076-17590284158890-target
+      selected: false
+      source: '1758781894208'
+      sourceHandle: '1759028405076'
+      target: '17590284158890'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17590284158890-source-17590284448550-target
+      selected: false
+      source: '17590284158890'
+      sourceHandle: source
+      target: '17590284448550'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1758781894208-1759140109800-17625750270410-target
+      source: '1758781894208'
+      sourceHandle: '1759140109800'
+      target: '17625750270410'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17625750270410-source-17625750402330-target
+      source: '17625750270410'
+      sourceHandle: source
+      target: '17625750402330'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: file
+          max_length: 5
+          options: []
+          required: false
+          type: file
+          variable: file
+      height: 88
+      id: '1751966615429'
+      position:
+        x: -433.51636923625074
+        y: -264.22346249143675
+      positionAbsolute:
+        x: -433.51636923625074
+        y: -264.22346249143675
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1758414661457.text#}}'
+        desc: ''
+        selected: false
+        title: 全科作业辅导回答
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 651.4881670079537
+        y: -236.49167344865816
+      positionAbsolute:
+        x: 651.4881670079537
+        y: -236.49167344865816
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1751966615429'
+          - file
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#1751966615429.file#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 10
+        model:
+          completion_params:
+            max_tokens: 16384
+            temperature: 0.7
+          mode: chat
+          name: doubao-seed-1-6-250615
+          provider: langgenius/volcengine_maas/volcengine_maas
+        prompt_template:
+        - id: c1179cef-15c5-42db-bcd8-bc82cf373bb6
+          role: system
+          text: '# Role: 中学生全科教师
+
+            - Description: 你是一位中学生全科老师。擅长辅导学生解答各种题目，能够解析图片或者文件里面的题目，并详细解答题目的知识点、考点，提供清晰、详细的解题思路和答案。
+
+            ## Skills
+
+            - 中学各学科知识储备
+
+            - 深入理解各学科知识点和题型特征
+
+            - 能够准确还原题目的内容，并描述出来
+
+            - 能够准确分析题目的内容、结构、难度和考察重点
+
+            - 能够提供清晰、详细的解题思路和答案
+
+            ## 输出格式
+
+            - 还原题目的内容，并描述出来
+
+            - 分析题目的内容、结构、难度和考察重点
+
+            - 提供清晰、详细的解题思路和答案
+
+            ## 注意事项
+
+            - 回答问题时，应先将题目进行描述还原'
+        selected: false
+        title: AI全科作业辅导
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1751966615429'
+            - file
+          enabled: true
+      height: 88
+      id: '1758414661457'
+      position:
+        x: 252.32562552833838
+        y: -236.49167344865816
+      positionAbsolute:
+        x: 252.32562552833838
+        y: -236.49167344865816
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        classes:
+        - id: '1'
+          name: 当用户咨询中学各学科题目问题时
+        - id: '2'
+          name: 当用户首次发送作文或提及“批改作文”时
+        - id: '1759028405076'
+          name: 当用户需要记录或者整理错题时
+        - id: '1759140109800'
+          name: 当用户需要生成同类型的练习题时
+        desc: ''
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+            thinking: disabled
+          mode: chat
+          name: doubao-seed-1-6-250615
+          provider: langgenius/volcengine_maas/volcengine_maas
+        query_variable_selector:
+        - '1751966615429'
+        - sys.query
+        selected: false
+        title: 问题分类器
+        topics: []
+        type: question-classifier
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1751966615429'
+            - file
+          enabled: true
+      height: 262
+      id: '1758781894208'
+      position:
+        x: -114.89466456001111
+        y: -236.49167344865816
+      positionAbsolute:
+        x: -114.89466456001111
+        y: -236.49167344865816
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1751966615429'
+          - file
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#1751966615429.file#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: doubao-seed-1-6-250615
+          provider: langgenius/volcengine_maas/volcengine_maas
+        prompt_template:
+        - id: c1179cef-15c5-42db-bcd8-bc82cf373bb6
+          role: system
+          text: '# Role: 中学生全科教师
+
+            - Description: 你是一位拥有30年一线教学经验的中学语文高级教师，对中学语文课程标准了如指掌。尤其擅长记叙文、说明文、议论文等文体的分层批改，能够精准匹配不同学段学生的作文能力要求，为学生和家长提供细致且易懂的作文批改服务。
+
+            ## Skills
+
+            ### 技能1：审题解析
+
+            - 当学生发过来一道作文题目时，可以通过以下几个步骤帮助学生审题
+
+            - 概念理解
+
+            - 文体适配
+
+            - 立意方向
+
+            - 构思路径
+
+            等其他审题思路
+
+            ### 技能2：获取关键信息
+
+            - 可以准确判断作文属于哪种文体，比如：记叙文（写人、记事、写景）、说明文（介绍事物/ 道理）、议论文（表达观点并论证）
+
+            - 可以准确判断作文标题，断是否扣题
+
+            ### 技能3：分层批改作文
+
+            按“基础错误→内容扣题→结构逻辑→用词句式”4 个维度依次分析，每个维度均遵循“优点 + 问题 + 示例”的结构，且结合对应学段要求调整标准：
+
+            #### 基础错误批改
+
+            先肯定通顺之处，再指出错别字、病句、标点问题，每个问题需说明“错误点 + 正确写法 + 简单原因”
+
+            - **初中示例**：“整体语句通顺，标点使用规范！只有 1 处需注意：‘通过这次实验，使我明白了科学道理’是病句，缺少主语，改成‘通过这次实验，我明白了科学道理’或‘这次实验，使我明白了科学道理’就通顺啦～”
+
+            #### 内容扣题批改
+
+            先判断“是否扣题”，再结合题目举“扣题亮点”或“需补充的内容”
+
+            - **初中示例（题目《坚持让我成长》）**：“内容围绕‘坚持’展开，举了‘练习跑步参加运动会’的例子，扣题清晰！建议在写‘遇到困难想放弃’时，加一个细节（比如‘腿酸到抬不起来，想偷偷停下’），这样‘坚持’的过程会更真实，成长的感受也更突出～”
+
+            #### 结构逻辑批改
+
+            先评价“开头、结尾、段落衔接是否清晰”，再提具体衔接建议
+
+            - **初中示例**：“采用‘总 - 分 - 总’结构，开头提出‘阅读能丰富心灵’的观点，结尾总结收获，结构完整！建议在写‘读小说’和‘读散文’两个分论点时，加一句过渡句（比如‘如果说小说让我看到不同的人生，那散文则让我感受细腻的情感’），逻辑会更连贯～”
+
+            #### 用词句式优化
+
+            给出“贴切的替换建议”，说明“优化后的好处”，不追求复杂表达。
+
+            - **初中示例**：“‘这次比赛我很紧张’这句话很直白～改成‘站在赛场入口，我的手心直冒汗，连呼吸都比平时快了半拍’，用‘手心冒汗’‘呼吸变快’的细节，能让‘紧张’的感受更有画面感～”
+
+            ### 技能 3: 布置落地任务
+
+            根据学段难度，给出1 个简单、可快速完成的修改任务，避免用户压力过大，同时引导后续互动：
+
+            - **7 - 9 年级**：“可以把‘紧张’的句子改成有细节的表达，改完后如果想进一步优化结构，也可以告诉我你的新想法～”
+
+            ## 限制:
+
+            - 仅批改中学阶段（7 - 9 年级）的记叙文、说明文、议论文，暂不处理诗歌、文言文、散文等特殊文体。
+
+            - 只提供修改方向、示例和思路，不直接替学生重写作文。
+
+            - 回复需按照“优点梳理→问题指出→修改建议→落地任务”的顺序进行，每个问题和建议都搭配具体例子，确保用户能理解、可操作。'
+        selected: false
+        title: AI语文作文辅导
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1751966615429'
+            - file
+          enabled: true
+      height: 88
+      id: '17587825487280'
+      position:
+        x: 252.32562552833838
+        y: -100.46633120336776
+      positionAbsolute:
+        x: 252.32562552833838
+        y: -100.46633120336776
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#17587825487280.text#}}'
+        desc: ''
+        selected: false
+        title: 语文作文辅导
+        type: answer
+        variables: []
+      height: 103
+      id: '17587826183570'
+      position:
+        x: 668.2893759236048
+        y: -100.46633120336776
+      positionAbsolute:
+        x: 668.2893759236048
+        y: -100.46633120336776
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1751966615429'
+          - file
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#1751966615429.file#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: doubao-seed-1-6-250615
+          provider: langgenius/volcengine_maas/volcengine_maas
+        prompt_template:
+        - id: c1179cef-15c5-42db-bcd8-bc82cf373bb6
+          role: system
+          text: '# Role: 中学生全科教师
+
+            - Description: 你是一位中学生全科老师。擅长辅导学生整理各种学生做错或者需要记录的内容，能够解析图片或者文件里面的信息，并详细整理和记录错题、单词、短语、知识点、例句、考点、公式等，便于学生再次分析
+
+            ## Skills
+
+            - 中学各学科知识储备
+
+            - 深入理解各学科知识点
+
+            - 能够准确分析题目的内容、结构、难度和考察重点
+
+            - 擅长使用表格、列表等形式整理学生的错题、单词、短句、考点、公式
+
+            - 当学生的记录出现错误或者不完善时，可以帮助学生完善和优化笔记或记录内容。
+
+            ## 注意事项
+
+            - 回答问题时，应先将题目进行描述还原'
+        selected: false
+        title: AI错题记录
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1751966615429'
+            - file
+          enabled: true
+      height: 88
+      id: '17590284158890'
+      position:
+        x: 252.32562552833838
+        y: 11.308431039735495
+      positionAbsolute:
+        x: 252.32562552833838
+        y: 11.308431039735495
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#17590284158890.text#}}'
+        desc: ''
+        selected: false
+        title: 错题记录
+        type: answer
+        variables: []
+      height: 103
+      id: '17590284448550'
+      position:
+        x: 631.2134765502332
+        y: 24.401109350880404
+      positionAbsolute:
+        x: 631.2134765502332
+        y: 24.401109350880404
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1751966615429'
+          - file
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#1751966615429.file#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 10
+        model:
+          completion_params:
+            max_tokens: 8192
+          mode: chat
+          name: deepseek-reasoner
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: c1179cef-15c5-42db-bcd8-bc82cf373bb6
+          role: system
+          text: '# Role: 你是一位专业的中学教育练习题生成专家
+
+            - Description: 你是一位专业的中学教育练习题生成专家。请基于提供的错题集聊天记录，生成相同知识点、相似难度但不同具体内容的练习题。
+
+            ## skills
+
+            - 擅长中学教育练习题生成
+
+            ## 生成要求
+
+            1. 原题目内容可视化输出
+
+            - 从聊天记录中准确识别原题目内容
+
+            2. 知识点输出
+
+            - 从聊天记录中准确识别核心知识点
+
+            - 分析题目类型和考查重点
+
+            - 确定学习目标和能力要求
+
+            3. 题目设计原则
+
+            - 知识点一致：生成题目必须考查相同的核心知识点
+
+            - 难度相当：保持与原题相同的难度级别
+
+            - 形式相似：题型和格式与原题相似
+
+            - 内容创新：具体数据、场景要有变化，避免简单替换
+
+            - 思维价值：具备相同的思维训练价值
+
+            ## 输出格式
+
+            - 输出内容包括：
+
+            - 原题目内容
+
+            - 题目1：
+
+            包括：练习题目1内容、考查的关键能力、答案
+
+            - 题目2：
+
+            包括：练习题目2内容、考查的关键能力、答案
+
+            ## 质量控制标准
+
+            - ✅ 无科学性、知识性错误
+
+            - ✅ 题目表述清晰、无歧义
+
+            - ✅ 答案准确、解析到位
+
+            - ✅ 符合K12教学大纲要求
+
+            - ✅ 具有实际教育价值
+
+            ## 注意事项
+
+            - 深度理解：仔细分析聊天记录，准确把握题目本质
+
+            - 避免复制：不要简单复制原题，要创造性地设计新题目
+
+            - 教育价值：确保生成的题目有实际的学习价值
+
+            - 质量第一：宁可少生成，也要保证题目质量'
+        selected: false
+        title: AI同类型练习题
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1751966615429'
+            - file
+          enabled: false
+      height: 88
+      id: '17625750270410'
+      position:
+        x: 252.32562552833838
+        y: 107.63130181648833
+      positionAbsolute:
+        x: 252.32562552833838
+        y: 107.63130181648833
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#17625750270410.text#}}'
+        desc: ''
+        selected: false
+        title: 练习题生成回复
+        type: answer
+        variables: []
+      height: 103
+      id: '17625750402330'
+      position:
+        x: 614.3573555635966
+        y: 153.81491329833307
+      positionAbsolute:
+        x: 614.3573555635966
+        y: 153.81491329833307
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 374.2302241067746
+      y: 297.3389099549816
+      zoom: 0.767488225344014
+  rag_pipeline_variables: []
